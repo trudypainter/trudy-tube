@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        fantasy: ["mono", "serif"],
+        mono: ["mono", "serif"],
       },
     },
   },

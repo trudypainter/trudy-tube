@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+  // previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider = "mysql"
+  url = env("DATABASE_URL")
+  // referentialIntegrity = "prisma"
+}
+
+model Song {
+  id            Int      @id @default(autoincrement())
+  spotifySongId String
+  songLink      String
+  songName      String
+  songImageUrl  String?
+
+  artistName    String
+  artistLink    String?
+
+  albumName     String
+  albumLink     String?
+
+  contextName   String?
+  contextLink   String?
+
+  genres        String
+  playedAt      DateTime
+
+}
+
+model Visit {
+  id            Int      @id @default(autoincrement())
+  ip            String
+  userAgent     String?
+  location      String?
+  createdAt     DateTime @default(now())
+}
