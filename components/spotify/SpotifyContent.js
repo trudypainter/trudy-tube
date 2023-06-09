@@ -78,42 +78,62 @@ export default function SpotifyContent() {
               <div className="text-sm text-black w-fit  bg-white p-2 border-2 border-b-0 border-black">
                 {formatPlayedDate(date)}
               </div>
-              <div className="border-2 border-black h-[600px] overflow-y-scroll">
-                {songs[date].map((song) => {
-                  return (
-                    <div className="flex flex-row m-0 space-x-1 bg-white p-2 ">
-                      <div>
-                        <Image src={song.songImageUrl} width={48} height={48} />
-                      </div>
-                      <div className="flex flex-col space-y-0 w-48">
-                        <a className="text-sm text-black" href={song.songLink}>
-                          {song.songName}
-                        </a>
-                        <a
-                          className="text-sm text-black"
-                          href={song.artistLink}
-                        >
-                          {song.artistName}
-                        </a>
-                        <a className="text-sm text-black" href={song.albumLink}>
-                          {song.albumName}
-                        </a>
-                      </div>
-                      <div className="flex flex-col space-y-0 w-48">
-                        <a
-                          className="text-sm text-black"
-                          href={song.contextLink}
-                        >
-                          Context: {song.contextName}
-                        </a>
-                        {/* played at in the format of HH:MM */}
-                        <div className="text-sm text-black">
-                          Played at: {formatPlayedAtTime(song.playedAt)}
+              <div className="flex flex-col h-[600px]">
+                <div className="text-sm  flex flex-wrap bg-white items-center p-2 border-2 border-b-0 border-black">
+                  <div className="mr-2">{songs[date].length} songs played </div>
+                  {songs[date].map((song) => {
+                    return (
+                      <div className="w-3 my-1 h-3 rounded-full bg-gray-600 mr-1"></div>
+                    );
+                  })}
+                </div>
+                <div className="border-2 border-black flex-grow-0 overflow-y-scroll">
+                  {songs[date].map((song) => {
+                    return (
+                      <div className="flex flex-row m-0 space-x-1 bg-white p-2 ">
+                        <div>
+                          <Image
+                            src={song.songImageUrl}
+                            width={48}
+                            height={48}
+                          />
+                        </div>
+                        <div className="flex flex-col space-y-0 w-48">
+                          <a
+                            className="text-sm text-black"
+                            href={song.songLink}
+                          >
+                            {song.songName}
+                          </a>
+                          <a
+                            className="text-sm text-black"
+                            href={song.artistLink}
+                          >
+                            {song.artistName}
+                          </a>
+                          <a
+                            className="text-sm text-black"
+                            href={song.albumLink}
+                          >
+                            {song.albumName}
+                          </a>
+                        </div>
+                        <div className="flex flex-col space-y-0 w-48">
+                          <a
+                            className="text-sm text-black"
+                            href={song.contextLink}
+                          >
+                            Context: {song.contextName}
+                          </a>
+                          {/* played at in the format of HH:MM */}
+                          <div className="text-sm text-black">
+                            Played at: {formatPlayedAtTime(song.playedAt)}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             </div>
           );

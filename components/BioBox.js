@@ -49,6 +49,16 @@ export default function BioBox() {
               Water Bottle: Clear Nalgene with a bendy straw{" "}
             </div>
             <div className="text-md text-black"> Site Visits: {visits} </div>
+            <div className="text-md text-black">
+              Full Site:{" "}
+              <a
+                className="text-blue-600 text-underline"
+                href="https://www.trudy.computer"
+                target="_blank"
+              >
+                www.trudy.computer
+              </a>{" "}
+            </div>
           </div>
         </div>
       </div>
