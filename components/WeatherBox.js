@@ -3,13 +3,24 @@ import { useEffect, useState } from "react";
 
 export default function WeatherBox() {
   const [weather, setWeather] = useState("");
+  const [currentTime, setCurrentTime] = useState("");
 
-  //   // generate a gradient based on the weather
-  //   function generateGradient(weather) {
-  //     // temperature from 0 to 100, 0 being cold and 100 being hot
-  //     // 0 is blue, 50 is yellow, 100 is red
+  const getNYCTime = async () => {
+    const currentTime = new Date().toLocaleTimeString("en-US", {
+      timeZone: "America/New_York",
+    });
+    // get time in 12 hour format string HH:MM:SS AM/PM
+    console.log("current time", currentTime);
+    setCurrentTime(currentTime);
+  };
 
-  //     // gradient is
+  // useEffect to update the time every second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getNYCTime();
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   // get the current weather of new york city
   useEffect(() => {
@@ -21,7 +32,7 @@ export default function WeatherBox() {
 
       // make a readable string for the weather
       // New York's current weather is 75°F with clear skies
-      const weather = `New York's current weather is ${json.main.temp}°F with ${json.weather[0].description}`;
+      const weather = `The current weather is ${json.main.temp}°F with ${json.weather[0].description}`;
       setWeather(weather);
     };
 
@@ -33,9 +44,27 @@ export default function WeatherBox() {
       <div className="border-2 bg-white text-sm border-black border-b-0 px-4 py-2 w-fit ">
         Current Weather
       </div>
-      <div className="border-2  border-black p-4 w-[800px] overflow-x-scroll ">
-        {weather}. This background gradient is generated from this weather.
+      <div className="border-2  border-black  w-[800px] overflow-x-scroll ">
+        <div className="bg-white p-4">
+          It is {currentTime} in NYC. {weather}. This background color is
+          generated from the weather.
+        </div>
+
+        <div className="flex justify-between">
+          <div className="w-4 h-48 bg-white"></div>
+          <div className="w-4 h-48 bg-white"></div>
+          <div className="w-4 h-48 bg-white"></div>
+        </div>
+        <div className="w-full h-4 bg-white"></div>
+        <div className="flex justify-between">
+          <div className="w-4 h-48 bg-white"></div>
+          <div className="w-4 h-48 bg-white"></div>
+          <div className="w-4 h-48 bg-white"></div>
+        </div>
+        <div className="w-full h-4 bg-white"></div>
       </div>
+      {/* window */}
+
       <div className="border-2 bg-white text-sm border-black border-t-0 px-4 py-2 w-fit float-right hover:cursor-pointer">
         Leave Me a Message
       </div>
