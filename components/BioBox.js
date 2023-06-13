@@ -23,21 +23,21 @@ export default function BioBox() {
   }, []);
 
   return (
-    <div>
-      <div className="border-2 bg-white text-sm border-black border-b-0 px-4 py-2 w-fit ">
+    <div className="laptop:w-[800px] mb-16 phone:w-[calc(100vw-1rem)] mx-auto">
+      <div className="border-2 bg-white text-sm border-black border-b-0 laptop:mx-0  px-4 py-2 w-fit ">
         About Me
       </div>
-      <div className="border-2 bg-white border-black p-4 w-[800px] overflow-x-scroll ">
-        <div className="flex items-center">
-          <div>
+      <div className="border-2 bg-white border-black p-4 w-full  overflow-x-scroll ">
+        <div className="laptop:flex  laptop:items-center phone:flex-col">
+          <div className="phone:pb-4">
             <Image
-              className="rounded-t-full"
+              className="rounded-t-full phone:mx-auto"
               src="/me.png"
               width={200}
               height={200}
             />
           </div>
-          <div className="ml-8">
+          <div className="laptop:ml-8">
             <div className="text-md text-black">Name: Trudy Painter </div>
             <div className="text-md text-black">Age: 21 </div>
             <div className="text-md text-black">Location: New York, NY </div>
@@ -62,7 +62,7 @@ export default function BioBox() {
           </div>
         </div>
       </div>
-      <div className="border-2 bg-white text-sm border-black border-t-0 px-4 py-2 w-fit float-right hover:cursor-pointer">
+      <div className="border-2 bg-white text-sm border-black laptop:mx-0  border-t-0 px-4 py-2 w-fit float-right  hover:cursor-pointer">
         Leave Me a Message
       </div>
     </div>

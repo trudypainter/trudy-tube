@@ -105,11 +105,19 @@ async function getSongGenres(accessToken, songId) {
 }
 
 async function makeSongData(track, accessToken) {
-  const context = await getContextInformation(
-    accessToken,
-    track.context.type,
-    track.context.uri
-  );
+  let contextName = "";
+  let contextLink = "";
+
+  if (track.context) {
+    let context = await getContextInformation(
+      accessToken,
+      track.context.type,
+      track.context.uri
+    );
+
+    contextName = context[1];
+    contextLink = context[0].external_urls.spotify;
+  }
 
   const songGenresString = await getSongGenres(accessToken, track.track.id);
 
@@ -125,8 +133,8 @@ async function makeSongData(track, accessToken) {
     albumName: track.track.album.name,
     albumLink: track.track.album.external_urls.spotify,
 
-    contextName: context[1],
-    contextLink: context[0].external_urls.spotify,
+    contextName: contextName,
+    contextLink: contextLink,
 
     genres: songGenresString,
     playedAt: track.played_at,
@@ -162,6 +170,7 @@ export default async (req, res) => {
     console.log("✅ newTracks", newTracks.length);
     const allSongs = [];
     for (const track of newTracks) {
+      console.log(track.track.name);
       const songData = await makeSongData(track, accessToken);
       await prisma.song.create({
         data: songData,

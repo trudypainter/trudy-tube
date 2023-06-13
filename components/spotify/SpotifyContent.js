@@ -100,33 +100,33 @@ export default function SpotifyContent() {
                         </div>
                         <div className="flex flex-col space-y-0 w-48">
                           <a
-                            className="text-sm text-black"
+                            className="text-sm text-black truncate"
                             href={song.songLink}
                           >
                             {song.songName}
                           </a>
                           <a
-                            className="text-sm text-black"
+                            className="text-sm text-black truncate"
                             href={song.artistLink}
                           >
                             {song.artistName}
                           </a>
                           <a
-                            className="text-sm text-black"
+                            className="text-sm text-black truncate"
                             href={song.albumLink}
                           >
                             {song.albumName}
                           </a>
                         </div>
-                        <div className="flex flex-col space-y-0 w-48">
+                        <div className="flex flex-col space-y-0 w-48 phone:hidden laptop:visible">
                           <a
-                            className="text-sm text-black"
+                            className="text-sm text-black truncate"
                             href={song.contextLink}
                           >
                             Context: {song.contextName}
                           </a>
                           {/* played at in the format of HH:MM */}
-                          <div className="text-sm text-black">
+                          <div className="text-sm text-black truncate">
                             Played at: {formatPlayedAtTime(song.playedAt)}
                           </div>
                         </div>

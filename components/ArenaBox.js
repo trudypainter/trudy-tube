@@ -59,11 +59,11 @@ export default function ArenaBox() {
   }, []);
 
   return (
-    <div>
+    <div className="laptop:w-[1000px] mb-16 phone:w-[calc(100vw-1rem)] mx-auto">
       <div className="border-2 bg-white text-sm border-black border-b-0 px-4 py-2 w-fit ">
         things i like (from Are.na)
       </div>
-      <div className="border-2 bg-white border-black p-4 w-[800px] overflow-x-scroll flex  items-center  space-x-8">
+      <div className="border-2 bg-white border-black p-4  overflow-x-scroll flex  items-center  space-x-8">
         <div className="w-72 text-center flex-shrink-0">
           Scroll → for some images I like...
         </div>

@@ -10,7 +10,6 @@ export default function WeatherBox() {
       timeZone: "America/New_York",
     });
     // get time in 12 hour format string HH:MM:SS AM/PM
-    console.log("current time", currentTime);
     setCurrentTime(currentTime);
   };
 
@@ -40,14 +39,15 @@ export default function WeatherBox() {
   }, []);
 
   return (
-    <div>
+    <div className="laptop:w-[800px] mb-16 phone:w-[calc(100vw-1rem)] mx-auto">
       <div className="border-2 bg-white text-sm border-black border-b-0 px-4 py-2 w-fit ">
         Current Weather
       </div>
-      <div className="border-2  border-black  w-[800px] overflow-x-scroll ">
+      <div className="border-2  border-black   overflow-x-scroll ">
         <div className="bg-white p-4">
           It is {currentTime} in NYC. {weather}. This background color is
-          generated from the weather.
+          generated from the weather. Warmer weather is red, colder weather is
+          blue.
         </div>
 
         <div className="flex justify-between">
@@ -64,10 +64,6 @@ export default function WeatherBox() {
         <div className="w-full h-4 bg-white"></div>
       </div>
       {/* window */}
-
-      <div className="border-2 bg-white text-sm border-black border-t-0 px-4 py-2 w-fit float-right hover:cursor-pointer">
-        Leave Me a Message
-      </div>
     </div>
   );
 }

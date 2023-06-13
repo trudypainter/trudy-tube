@@ -16,7 +16,7 @@ export default function Home() {
     <div className="w-full bg-transparent">
       <TubeHead />
 
-      <main className="flex-col flex justify-center items-center py-32 pb-96 space-y-16">
+      <main className=" laptop:py-32 phone:py-0 pb-96 ">
         <RippleGradient />
         <BioBox />
         <SpotifyBox />
