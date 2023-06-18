@@ -19,7 +19,7 @@ npx prisma db push
 ```
 
 ```
-pscale shell trudy-tube main
+pscale shell db main
 ```
 
 To see if the changes updated

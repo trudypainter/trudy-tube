@@ -138,6 +138,8 @@ async function makeSongData(track, accessToken) {
 
     genres: songGenresString,
     playedAt: track.played_at,
+
+    audioPreviewUrl: track.track.preview_url,
   };
 
   return songData;

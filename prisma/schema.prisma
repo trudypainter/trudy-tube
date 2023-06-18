@@ -28,6 +28,8 @@ model Song {
   genres        String
   playedAt      DateTime
 
+  audioPreviewUrl String?
+
 }
 
 model Visit {

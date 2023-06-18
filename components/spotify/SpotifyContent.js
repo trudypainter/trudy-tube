@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import SpotifyChart from "./SpotifyChart";
+import SongRow from "./SongRow";
 
 export default function SpotifyContent() {
   const [songs, setSongs] = useState(null);
@@ -40,17 +42,6 @@ export default function SpotifyContent() {
     fetchData();
   }, []);
 
-  const formatPlayedAtTime = (playedAt) => {
-    // return time in format of HH:MM
-    const time = playedAt.split("T")[1].split(".")[0];
-    const hours = parseInt(time.split(":")[0]);
-    const minutes = parseInt(time.split(":")[1]);
-    const ampm = hours >= 12 ? "pm" : "am";
-    const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
-    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-    return `${formattedHours}:${formattedMinutes} ${ampm}`;
-  };
-
   const formatPlayedDate = (playedAt) => {
     // return date in format of Day of the Week, Month Day, Year
     const date = playedAt.split("T")[0];
@@ -66,7 +57,24 @@ export default function SpotifyContent() {
       { weekday: "short" }
     );
 
-    return `${dayOfWeek}, ${monthName} ${day}, ${year}`;
+    // get the day before playedAt
+    const nextDay = new Date(playedAt);
+    nextDay.setDate(nextDay.getDate() + 1);
+    const nextDayDayOfWeek = nextDay.toLocaleString("default", {
+      weekday: "short",
+    });
+
+    return `${nextDayDayOfWeek}, ${monthName} ${day}, ${year}`;
+  };
+
+  const noScrollBarStyles = {
+    overflowX: "scroll",
+    msOverflowStyle: "none", // for IE and Edge
+    scrollbarWidth: "none", // for Firefox
+    WebkitOverflowScrolling: "touch", // for mobile webkit
+    "&::-webkit-scrollbar": {
+      display: "none", // for Chrome, Safari, and Opera
+    },
   };
 
   return (
@@ -78,60 +86,13 @@ export default function SpotifyContent() {
               <div className="text-sm text-black w-fit  bg-white p-2 border-2 border-b-0 border-black">
                 {formatPlayedDate(date)}
               </div>
-              <div className="flex flex-col h-[600px]">
+              <div className="flex flex-col h-[calc(100vh-90px)]">
                 <div className="text-sm  flex flex-wrap bg-white items-center p-2 border-2 border-b-0 border-black">
-                  <div className="mr-2">{songs[date].length} songs played </div>
-                  {songs[date].map((song) => {
-                    return (
-                      <div className="w-3 my-1 h-3 rounded-full bg-gray-600 mr-1"></div>
-                    );
-                  })}
+                  <SpotifyChart songs={songs[date]} />
                 </div>
                 <div className="border-2 border-black flex-grow-0 overflow-y-scroll">
                   {songs[date].map((song) => {
-                    return (
-                      <div className="flex flex-row m-0 space-x-1 bg-white p-2 ">
-                        <div>
-                          <Image
-                            src={song.songImageUrl}
-                            width={48}
-                            height={48}
-                          />
-                        </div>
-                        <div className="flex flex-col space-y-0 w-48">
-                          <a
-                            className="text-sm text-black truncate"
-                            href={song.songLink}
-                          >
-                            {song.songName}
-                          </a>
-                          <a
-                            className="text-sm text-black truncate"
-                            href={song.artistLink}
-                          >
-                            {song.artistName}
-                          </a>
-                          <a
-                            className="text-sm text-black truncate"
-                            href={song.albumLink}
-                          >
-                            {song.albumName}
-                          </a>
-                        </div>
-                        <div className="flex flex-col space-y-0 w-48 phone:hidden laptop:visible">
-                          <a
-                            className="text-sm text-black truncate"
-                            href={song.contextLink}
-                          >
-                            Context: {song.contextName}
-                          </a>
-                          {/* played at in the format of HH:MM */}
-                          <div className="text-sm text-black truncate">
-                            Played at: {formatPlayedAtTime(song.playedAt)}
-                          </div>
-                        </div>
-                      </div>
-                    );
+                    return <SongRow song={song} />;
                   })}
                 </div>
               </div>
