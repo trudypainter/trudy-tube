@@ -39,7 +39,7 @@ export default function Home() {
 
       {modalOpen && (
         <div className="absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center">
-          <div className="w-96 min-w-[600px] max-w-[calc(100vw - 30px)] bg-white  border-2 border-black backdrop-blur-md p-16">
+          <div className=" max-w-[calc(100vw-30px)] bg-white  border-2 border-black backdrop-blur-md p-16">
             <div>
               Hi, I'm{" "}
               <a
@@ -52,7 +52,7 @@ export default function Home() {
               . This is a project to track all the songs I listen to.
             </div>
 
-            <div className="mt-8 flex space-x-2 items-starts">
+            <div className="mt-8 flex space-x-2 items-starts laptop:visible phone:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -63,6 +63,11 @@ export default function Home() {
               </svg>
               <div>Hover to play songs, click to open in Spotify.</div>
             </div>
+
+            <div className="mt-8 flex space-x-2 items-starts laptop:hidden phone:visible">
+              <div>💻 This website is better on your computer!</div>
+            </div>
+
             <div
               onClick={() => setModalOpen(false)}
               className="bg-pink-400 hover:cursor-pointer hover:bg-pink-500 mt-12 rounded-full text-center w-48 mx-auto p-4"

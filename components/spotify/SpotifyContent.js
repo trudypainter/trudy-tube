@@ -90,7 +90,7 @@ export default function SpotifyContent() {
                 <div className="text-sm  flex flex-wrap bg-white items-center p-2 border-2 border-b-0 border-black">
                   <SpotifyChart songs={songs[date]} />
                 </div>
-                <div className="border-2 border-black flex-grow-0 overflow-y-scroll">
+                <div className="border-2 border-black flex-grow-0 overflow-y-scroll bg-white">
                   {songs[date].map((song) => {
                     return <SongRow song={song} />;
                   })}

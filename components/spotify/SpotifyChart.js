@@ -64,7 +64,7 @@ export default function SpotifyChart({ songs }) {
     <>
       <div className="w-full text-sm">
         <div className="w-full text-center ">Time Played</div>
-        <div className="w-full flex justify-around">
+        <div className="w-full flex  justify-around">
           <div>8:00am</div>
           <div>12:00pm</div>
           <div>8:00pm</div>
@@ -82,7 +82,7 @@ export default function SpotifyChart({ songs }) {
                     onClick={() => {
                       window.open(song.songLink, "_blank");
                     }}
-                    className="w-3 h-3 rounded-full bg-gray-600 hover:bg-black hover:cursor-pointer"
+                    className="laptop:w-3 laptop:h-3 phone:w-2 phone:h-2 rounded-full bg-gray-600 hover:bg-black hover:cursor-pointer"
                   ></div>
                 );
               })}
@@ -91,7 +91,7 @@ export default function SpotifyChart({ songs }) {
         })}
       </div>
       {selectedSong ? (
-        <div className="flex h-16 items-center bg-slate-50 space-x-2 w-full p-2">
+        <div className="laptop:visible phone:hidden flex h-16 items-center bg-slate-50 space-x-2 w-full p-2">
           <div className="">
             <Image
               width={32}
@@ -105,7 +105,7 @@ export default function SpotifyChart({ songs }) {
           </div>
         </div>
       ) : (
-        <div className="h-16 bg-slate-50 w-full text-center flex items-center justify-center">
+        <div className=" laptop:visible phone:hidden h-16 bg-slate-50 w-full text-center flex items-center justify-center">
           <p>Hover to play song</p>
         </div>
       )}

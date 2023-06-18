@@ -40,6 +40,9 @@ export default function SongRow({ song }) {
             >
               {song.albumName}
             </a>
+            <div className="laptop:hidden phone:visible text-sm text-black truncate ">
+              Played at: {formatPlayedAtTime(song.playedAt)}
+            </div>
           </div>
           <div className="flex flex-col space-y-0 w-48 phone:hidden laptop:visible items-start truncate">
             <a
