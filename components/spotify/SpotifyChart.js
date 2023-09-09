@@ -42,7 +42,7 @@ export default function SpotifyChart({ songs }) {
       });
     }
 
-    console.log(hours);
+    // console.log(hours);
     setHours(hours);
   }, []);
 
@@ -105,7 +105,7 @@ export default function SpotifyChart({ songs }) {
           </div>
         </div>
       ) : (
-        <div className=" laptop:visible phone:hidden h-16 bg-slate-50 w-full text-center flex items-center justify-center">
+        <div className=" laptop:visible phone:hidden h-16 bg-gray-100 w-full text-center flex items-center justify-center">
           <p>Hover to play song</p>
         </div>
       )}

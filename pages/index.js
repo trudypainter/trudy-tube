@@ -31,7 +31,7 @@ export default function Home() {
       <TubeHead />
 
       <main
-        className="flex h-screen items-center bg-blue-100 p-16 overflow-x-scroll overflow-y-hidden"
+        className="flex h-screen items-center bg-gray-50 overflow-x-scroll overflow-y-hidden"
         style={noScrollBarStyles}
       >
         <SpotifyContent />
@@ -70,7 +70,7 @@ export default function Home() {
 
             <div
               onClick={() => setModalOpen(false)}
-              className="bg-yellow-300 border-dotted border-2 border-black hover:cursor-pointer hover:border-solid mt-12 rounded-full text-center w-48 mx-auto p-4"
+              className="bg-gray-200 text-black  border-2 border-black hover:cursor-pointer hover:bg-gray-300 mt-12 rounded-full text-center w-48 mx-auto p-4"
             >
               Let's go
             </div>
